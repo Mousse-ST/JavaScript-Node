@@ -15,9 +15,10 @@ const fileArr = ['index0.html', 'default.html', 'index.html']
 
 const fnFsStat = function(request, response, filepath, arrIndex){
     arrIndex = arrIndex || 0
-    fs.stat(filepath, function(err, state){
-        if (!err && state.isFile()){
-            console.log('200' + request.url);
+    fs.stat(filepath, function(err, states){
+        console.log(err + states)
+        if (!err && states.isFile()){
+            console.log('200 ' + request.url);
             response.writeHead(200);
             fs.createReadStream(filepath).pipe(response);
         } else if (!err && states.isDirectory() || arrIndex != 0 && arrIndex < fileArr.length){
