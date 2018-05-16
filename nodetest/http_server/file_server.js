@@ -20,15 +20,15 @@ const fnFsStat = function(request, response, filepath, arrIndex){
             console.log('200' + request.url);
             response.writeHead(200);
             fs.createReadStream(filepath).pipe(response);
-        } else if (arrIndex < fileArr.length){
+        } else if (!err && states.isDirectory() || arrIndex != 0 && arrIndex < fileArr.length){
             arrIndex += 1;
             filepath = path.join(root, fileArr[arrIndex - 1]);
-            console.log("filepath" + filepath);
+            console.log("filepath " + filepath);
             fnFsStat(request, response, filepath, arrIndex)
         } else {
-            console.log('404' + request.url);
+            console.log('no file ' + '404 ' + request.url);
             response.writeHead(404);
-            response.end('404 not found!');
+            response.end('404 Not Found!');
         }
     });
 }
@@ -36,8 +36,8 @@ const fnFsStat = function(request, response, filepath, arrIndex){
 const server = http.createServer(function(request, response){
     let pathname = url.parse(request.url).pathname;
     let filepath = path.join(root, pathname);
-    console.log("filepath" + filepath);
-    fnFsStat(request, response, filepath);
+    console.log("filepath " + filepath);
+    fnFsStat(request, response, filepath, 0);
 });
 
 server.listen(8080);
