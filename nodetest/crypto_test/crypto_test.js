@@ -48,3 +48,24 @@ console.log('Plain text: ' + data);
 console.log('Encrypted text: ' + encrypted);
 console.log('Decrypted text: ' + decrypted);
 console.log(data === decrypted);
+
+
+// ** Diffie-Hellman
+// DH算法是一种密钥交换协议，它可以让双方在不泄漏密钥的情况下计算出一个密钥来。
+var userA = crypto.createDiffieHellman(512);
+var userA_keys = userA.generateKeys();
+
+var prime = userA.getPrime();
+var generator = userA.getGenerator();
+
+console.log('Prime: ' + prime.toString('hex'));
+console.log('Generator: ' + generator.toString('hex'));
+
+var userB = crypto.createDiffieHellman(prime, generator);
+var userB_keys = userB.generateKeys();
+
+var userA_secret = userA.computeSecret(userB_keys);
+var userB_secret = userB.computeSecret(userA_keys);
+
+console.log('Secret of userA: ' + userA_secret.toString('hex'));
+console.log('Secret of userB: ' + userB_secret.toString('hex'));
