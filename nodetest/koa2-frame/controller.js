@@ -26,7 +26,7 @@ function addMapping(router, mapping) {
 }
 
 function addControllers(router, dir) {
-    fs.readdirSync(__dirname + '/' + dir).filter((f) => {
+    fs.readdirSync(__dirname + '/' + dir).filter((f) => { //__dirname：全局变量，存储的是文件所在的文件目录
         return f.endsWith('.js');
     }).forEach((f) => {
         console.log(`process controller: ${f}...`);
