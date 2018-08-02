@@ -26,7 +26,7 @@ function addMapping(router, mapping) {
 }
 
 function addControllers(router, dir) {
-    fs.readdirSync(__dirname + '/' + dir).filter((f) => { //__dirname：全局变量，存储的是文件所在的文件目录
+    fs.readdirSync(__dirname + '/' + dir).filter((f) => { //__dirname：全局变量，存储的是文件所在的文件目录；这里可以用sync是因为启动时只运行一次，不存在性能问题
         return f.endsWith('.js');
     }).forEach((f) => {
         console.log(`process controller: ${f}...`);

@@ -12,10 +12,10 @@ app.use(async (ctx, next) => {
     await next();
 });
 
-// parse request body:
+// parse request body:引入koa-router这个middleware，让它负责处理URL映射。
 app.use(bodyParser());
 
-// add controllers:
+// add controllers:由于middleware的顺序很重要，这个koa-bodyparser必须在router之前被注册到app对象上。
 app.use(controller());
 
 app.listen(3000);
