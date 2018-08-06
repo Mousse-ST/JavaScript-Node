@@ -8,8 +8,9 @@ const app = new Koa();
 
 // log request URL:
 app.use(async (ctx, next) => {
-    console.log(`User Process ${ctx.request.method} ${ctx.request.url}...`);
+    console.log(`User Process ${ctx.request.method} ${ctx.request.url} ...`);
     await next();
+    console.log(`User Process ${ctx.request.method} ${ctx.request.url} Down!`);
 });
 
 // parse request body:引入koa-router这个middleware，让它负责处理URL映射。

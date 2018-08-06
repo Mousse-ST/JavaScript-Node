@@ -5,6 +5,7 @@ var fn_index = async (ctx, next) => {
             <p>Password: <input name="password" type="password"></p>
             <p><input type="submit" value="Submit"></p>
         </form>`;
+    console.log('page index ...');
 };
 
 var fn_signin = async (ctx, next) => {
