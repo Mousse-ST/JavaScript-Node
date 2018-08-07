@@ -1,0 +1,18 @@
+{
+    "name": "sequelize-frame",
+    "version": "1.0.0",
+    "description": "sequelize frame",
+    "main": "app.js",
+    "scripts": {
+        "start": "node app.js"
+    },
+    "author": "Mousse",
+    "license": "Apache-2.0",
+    "repository": {
+        "type": "git"
+    },
+    "dependencies": {
+        "sequelize": "3.24.1",
+        "mysql": "2.11.1"
+    }
+}
