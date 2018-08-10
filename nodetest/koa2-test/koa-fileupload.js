@@ -58,3 +58,4 @@ app.use(main);
 app.listen(3001);
 
 //打开另一个命令行窗口，运行下面的命令，上传一个文件。注意，/path/to/file要更换为真实的文件路径。
+//curl --form "fileupload=@uploadtest.txt" http://127.0.0.1:3001

@@ -1,17 +1,19 @@
-const Sequelize = require('sequlize');
+const Sequelize = require('sequelize');
+
 const uuid = require('node-uuid');
+
 const config = require('./config');
 
-console.log(`Init sequelize...`);
+console.log('init sequelize...');
 
-function generateId(){
+function generateId() {
     return uuid.v4();
 }
 
-var sequelize = new Sequelize(config.database, config.username, config.password,{
+var sequelize = new Sequelize(config.database, config.username, config.password, {
     host: config.host,
     dialect: config.dialect,
-    pool:{
+    pool: {
         max: 5,
         min: 0,
         idle: 10000
@@ -100,17 +102,18 @@ const TYPES = ['STRING', 'INTEGER', 'BIGINT', 'TEXT', 'DOUBLE', 'DATEONLY', 'BOO
 
 var exp = {
     defineModel: defineModel,
-    sync:() => {
-        if (process.env.NODE_ENV != 'production'){
-            sequelize.sync({force: true});
+    sync: () => {
+        // only allow create ddl in non-production environment:
+        if (process.env.NODE_ENV !== 'production') {
+            sequelize.sync({ force: true });
         } else {
-            throw new Error('Cannot sync() when NODE_ENV is set to \'production\'!');
+            throw new Error('Cannot sync() when NODE_ENV is set to \'production\'.');
         }
     }
 };
 
-for (let type of TYPES){
-    exp[tpye] = Sequelize[type];
+for (let type of TYPES) {
+    exp[type] = Sequelize[type];
 }
 
 exp.ID = ID_TYPE;

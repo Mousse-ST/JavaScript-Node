@@ -4,8 +4,12 @@
     "description": "sequelize frame",
     "main": "app.js",
     "scripts": {
-        "start": "node app.js"
+        "start": "node --use_strict app.js"
     },
+    "keywords": [
+        "sequelize",
+        "async"
+    ],
     "author": "Mousse",
     "license": "Apache-2.0",
     "repository": {
