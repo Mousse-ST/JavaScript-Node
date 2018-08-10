@@ -1,3 +1,4 @@
+// 如何导入Model
 // scan all models defined in models:
 const fs = require('fs');
 const db = require('./db');

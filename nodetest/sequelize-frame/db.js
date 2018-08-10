@@ -1,3 +1,5 @@
+// 如何定义Model
+
 const Sequelize = require('sequelize');
 
 const uuid = require('node-uuid');
